@@ -27,6 +27,10 @@ Resources:
           Principal: '*'
           Action: s3:GetObject
           Resource: !Join ['', ['arn:aws:s3:::', !Ref 'WebsiteBucket', /*]]
+      Tags:
+        - Key: Name
+          Value: !Sub frontend-${ID}
+
 
 Outputs:
   WebsiteURL:
