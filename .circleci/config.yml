@@ -102,7 +102,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [scan-frontend]
+          keys: [frontend-scan]
       - run:
           name: Run Frontend Scan
           command: |
@@ -117,7 +117,7 @@ jobs:
       steps:
         - checkout
         - restore_cache:
-            keys: [scan-backend]
+            keys: [backend-scan]
         - run:
             name: Run Backend Scan
             command: |
