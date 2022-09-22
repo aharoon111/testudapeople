@@ -121,7 +121,7 @@ jobs:
         - run:
             name: Run Backend Scan
             command: |
-              cd backend
+              cd frontend
               npm install
               # npm install oauth-sign@^0.9.0
               npm audit --audit-level=critical
