@@ -102,9 +102,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [fronend-scan]
+          keys: [frontend-scan]
       - run:
-          name: Run Fronend Scan
+          name: Run Frontend Scan
           command: |
             cd frontend
             npm install
