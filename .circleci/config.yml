@@ -143,6 +143,13 @@ jobs:
               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  
               
       - run:
+          name: Ensure front-end infrastructure exist
+          command: |
+            aws cloudformation deploy \
+              --template-file .circleci/files/frontend.yml \
+              --tags project=udapeoplefront \
+              --stack-name "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}"
+      - run:
           name: Add back-end ip to ansible inventory
           command: |
             aws cloudformation \
@@ -153,16 +160,7 @@ jobs:
           paths:
             - project/.circleci/ansible/inventory.txt
       - destroy-environment
-      # Here's where you will add some code to rollback on failure      
-      - run:
-          name: Ensure front-end infrastructure exist
-          command: |
-            aws cloudformation deploy \
-              --stack-name "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}"
-              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"
-              --template-file .circleci/files/frontend.yml \
-              --tags project=udapeoplefront \
-              
+      # Here's where you will add some code to rollback on failure    
 
 workflows:
   default:
