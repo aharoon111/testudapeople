@@ -29,7 +29,7 @@ Resources:
           Resource: !Join ['', ['arn:aws:s3:::', !Ref 'WebsiteBucket', /*]]
       Tags:
         - Key: Name
-          Value: !Sub frontend-${ID}
+          Value: !Sub frontend
 
 
 Outputs:
