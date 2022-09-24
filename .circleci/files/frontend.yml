@@ -2,7 +2,7 @@ Description: >
   UdaPeople frontend stack.
 
 Parameters:
-  ID:
+  IDS:
     Description: Unique identifier.
     Type: String
 
@@ -10,7 +10,7 @@ Resources:
   WebsiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub UdaPeopleFront
+      BucketName: !Sub "UdaPeople-${ID}"
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
@@ -27,9 +27,7 @@ Resources:
           Principal: '*'
           Action: s3:GetObject
           Resource: !Join ['', ['arn:aws:s3:::', !Ref 'WebsiteBucket', /*]]
-      Tags:
-        - Key: Name
-          Value: !Sub frontend
+
 
 
 Outputs:
