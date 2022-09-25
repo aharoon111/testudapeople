@@ -163,8 +163,8 @@ jobs:
             - project/.circleci/ansible/inventory.txt
       - destroy-environment
       # Here's where you will add some code to rollback on failure    
-    --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  \
-        - destroy-environment
+      --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  \
+          - destroy-environment
 workflows:
   default:
     jobs:
