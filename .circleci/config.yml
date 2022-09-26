@@ -178,6 +178,7 @@ jobs:
           name: Install dependencies
           command: |
             yum -y install tar gzip ansible-playbook ansible awscli 
+            python3 -m pip install --upgrade --user ansible
       - run:
           name: Configure server
           command: |
