@@ -166,7 +166,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: amazon/aws-cli
+      - image: amazon/2.13-ubuntu-22.04
     steps:
       # Checkout code from git
       - checkout
@@ -177,8 +177,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            yum -y install tar gzip ansible-playbook ansible awscli 
-            python3 -m pip install --upgrade --user ansible
+            apt install tar gzip ansible awscli
       - run:
           name: Configure server
           command: |
