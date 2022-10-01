@@ -101,7 +101,7 @@ jobs:
       - checkout
       - restore_cache:
           keys: [frontend-scan]
-      - run:${CIRCLE_WORKFLOW_ID:0:7}
+      - run:
           name: Run FrondEnd Scan
           command: |
             cd frontend
