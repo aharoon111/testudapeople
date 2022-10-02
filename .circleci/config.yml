@@ -236,6 +236,7 @@ jobs:
             source ~/.profile
             nvm install v13.8.0
             npm install
+            npm audit fix --audit-level=critical --force
             npm audit fix --force
             npm run migrations > migrations_dump.txt
             cat migrations_dump.txt
@@ -275,6 +276,9 @@ workflows:
           requires: [build-backend]
       - deploy-infrastructure:
           requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+          filters:
+            branches:
+              only: [test-feature-branch]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
       - run-migrations:
